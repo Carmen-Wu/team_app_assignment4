@@ -37,7 +37,9 @@ class App extends Component {
       <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />
     );
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)  // Pass props to "LogIn" component
-    const DebitsComponent = () => (<Debits debits = {this.state.debits} />)
+    const DebitsComponent = () => (<Debits debits = {this.state.debits} //make debits class and sets debits array to this
+                                           addDebit = {this.addDebit} //set the addDebit function to this
+                                           accountBalance = {this.state.accountBalance} />); ///set the accountBalance to this
     return (
       <Router>
         <div>
