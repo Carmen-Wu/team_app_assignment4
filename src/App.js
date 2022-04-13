@@ -11,7 +11,7 @@ class App extends Component {
   constructor() {  // Create and initialize state
     super(); 
     this.state = {
-      accountBalance: 14568.27,
+      accountBalance: 0,
       currentUser: {
         userName: 'Joe Smith',
         memberSince: '07/23/96',
@@ -29,7 +29,17 @@ class App extends Component {
 
   addDebit = (e) => {}
 
-  componentDidMount(){}
+
+  async componentDidMount(){
+    fetch('https://moj-api.herokuapp.com/debits') //fetch the api 
+      .then((response) => response.json()) //if theres a response from api
+      .then(debitList => { //api = debitList
+        this.setState({ debits: debitList});//set debitList to currentstate
+        this.state.debits.map(debit => 
+        this.setState({accountBalance : (this.state.accountBalance  - parseFloat(debit.amount)).toFixed(2)}) //map debit to accountBalance by (-) debitAmount
+      )
+    })
+}
   // Create Routes and React elements to be rendered using React components
   render() {  
     const HomeComponent = () => (<Home accountBalance={this.state.accountBalance}/>);
