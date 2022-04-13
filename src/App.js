@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Home from './components/Home';
 import UserProfile from './components/UserProfile';
 import LogIn from './components/Login';
+import Debits from './components/Debits';
 
 class App extends Component {
   constructor() {  // Create and initialize state
@@ -14,7 +15,8 @@ class App extends Component {
       currentUser: {
         userName: 'Joe Smith',
         memberSince: '07/23/96',
-      }
+      },
+      debits: [],
     }
   }
 
@@ -25,6 +27,9 @@ class App extends Component {
     this.setState({currentUser: newUser})
   }
 
+  addDebit = (e) => {}
+
+  componentDidMount(){}
   // Create Routes and React elements to be rendered using React components
   render() {  
     const HomeComponent = () => (<Home accountBalance={this.state.accountBalance}/>);
@@ -32,13 +37,14 @@ class App extends Component {
       <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />
     );
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)  // Pass props to "LogIn" component
-
+    const DebitsComponent = () => (<Debits debits = {this.state.debits} />)
     return (
       <Router>
         <div>
           <Route exact path="/" render={HomeComponent}/>
           <Route exact path="/userProfile" render={UserProfileComponent}/>
           <Route exact path="/login" render={LogInComponent}/>
+          <Route exact path="/debits" render={DebitsComponent}/>
         </div>
       </Router>
     );
