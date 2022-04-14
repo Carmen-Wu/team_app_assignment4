@@ -1,0 +1,25 @@
+.navBar ul{
+    list-style-type: none;
+    font-size: 1.3em;
+    text-align: right;
+    margin-top: 0;
+    padding-right: 5%;
+    padding-bottom: 1em;
+    padding-top: 1em;
+    background-color: rgb(245, 211, 217);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.navBar li{
+    display: inline;
+}
+
+.navBar a{
+    text-decoration: none;
+    padding-right: 1.5em;
+    color:rgb(243, 158, 164)
+}
+
+.navBar a:hover {
+    color:rgb(200, 177, 227)
+} 
