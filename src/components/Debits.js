@@ -1,4 +1,5 @@
 // src/components/Debits.js
+import React from 'react';
 
 const Debits = (props) => {
 	let debitsView = () => {
@@ -11,6 +12,7 @@ const Debits = (props) => {
   return (
     <div>
       <h1>Debits</h1>
+      <h2>Balance: {props.accountBalance}</h2> 
       {debitsView()}
       <form onSubmit={props.addDebit}>
         <input type="text" name="description" />
