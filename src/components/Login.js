@@ -3,6 +3,7 @@
 
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 class LogIn extends Component {
   constructor () {  // Create and initialize state
@@ -40,6 +41,14 @@ class LogIn extends Component {
     // Render the login form
     return (
       <div>
+        <nav className='navBar'> 
+          <ul>
+            <li><Link to="/userProfile">User Profile</Link></li>
+            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/debits">Debits</Link></li>
+            <li><Link to="/credits">Credits</Link></li>
+          </ul>
+        </nav>
         <h1>Login</h1>
 
         <form onSubmit={this.handleSubmit}>

@@ -1,5 +1,6 @@
 // src/components/Debits.js
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const Debits = (props) => {
 	let debitsView = () => {
@@ -11,6 +12,14 @@ const Debits = (props) => {
   }
   return (
     <div>
+      <nav className='navBar'> 
+          <ul>
+            <li><Link to="/userProfile">User Profile</Link></li>
+            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/debits">Debits</Link></li>
+            <li><Link to="/credits">Credits</Link></li>
+          </ul>
+        </nav>
       <h1>Debits</h1>
       <h2>Balance: {props.accountBalance}</h2> 
       {debitsView()}
