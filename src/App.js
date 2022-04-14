@@ -27,8 +27,20 @@ class App extends Component {
     this.setState({currentUser: newUser})
   }
 
-  addDebit = (e) => {}
-
+  addDebit = (e) => {
+    e.preventDefault(); // prevent the form from submitting
+    const newDebit = (prevState)=> ({ //create newDebit entry 
+      debits: [...prevState.debits, //adding previous debit state + new entry to the array that contains id, amount,description, date
+        {id:Math.random().toString(16).slice(2), //generate a random string
+        amount: e.target.amount.valueAsNumber, //set amount equal to the user amount value
+        description: e.target.description.value, //set description equal to the user description value
+        date: new Date().toISOString()}], //set date to the current date
+        })
+    this.setState(newDebit) //set the new entry state
+        //create a new variable called newBal which takes the current balance subtracted by the user amount
+    const newBal = (this.state.accountBalance - e.target.amount.valueAsNumber).toFixed(2)
+    this.setState({accountBalance: newBal}) //set newBal state
+  }
 
   async componentDidMount(){
     fetch('https://moj-api.herokuapp.com/debits') //fetch the api 
