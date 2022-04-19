@@ -15,7 +15,7 @@ class Home extends Component {
             <li><Link to="/userProfile">User Profile</Link></li>
             <li><Link to="/login">Login</Link></li>
             <li><Link to="/debits">Debits</Link></li>
-            <li><Link to="">Credits</Link></li>
+            <li><Link to="/credits">Credits</Link></li>
           </ul>
         </nav>
         <img src="https://picsum.photos/200/200" alt="bank"/>
