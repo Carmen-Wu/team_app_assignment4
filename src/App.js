@@ -92,7 +92,7 @@ class App extends Component {
                                             addCredit = {this.addCredit} //set the addCredit function to this
                                             accountBalance = {this.state.accountBalance} />); ///set the accountBalance to this
     return (
-      <Router>
+      <Router basename="/team_app_assignment4">
         <div>
           <Route exact path="/" render={HomeComponent}/>
           <Route exact path="/userProfile" render={UserProfileComponent}/>
