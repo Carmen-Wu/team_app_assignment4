@@ -74,7 +74,7 @@ class App extends Component {
       .then(creditList => { //api = creditList
         this.setState({ credits: creditList});//set creditList to currentstate
         this.state.credits.map(credit => 
-        this.setState({accountBalance : (this.state.accountBalance  - parseFloat(credit.amount)).toFixed(2)}) //map credit to accountBalance by (-)  creditAmount
+        this.setState({accountBalance : (+this.state.accountBalance  + parseFloat(credit.amount)).toFixed(2)}) //map credit to accountBalance by (-)  creditAmount
       )
     })
 }
