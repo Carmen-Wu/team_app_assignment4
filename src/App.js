@@ -27,6 +27,32 @@ class App extends Component {
     this.setState({currentUser: newUser})
   }
 
+  addCredit = (e) => {
+    e.preventDefault(); // prevent the form from submitting
+    const newCredit = (prevState)=> ({ //create newCredit entry 
+      credits: [...prevState.credits, //adding previous credit state + new entry to the array that contains id, amount,description, date
+        {id:Math.random().toString(16).slice(2), //generate a random string
+        amount: e.target.amount.valueAsNumber, //set amount equal to the user amount value
+        description: e.target.description.value, //set description equal to the user description value
+        date: new Date().toISOString()}], //set date to the current date
+        })
+    this.setState(newCredit) //set the new entry state
+        //create a new variable called newBal which takes the current balance added by the user amount and previous amount
+    const newBal = (+this.state.accountBalance + e.target.amount.valueAsNumber).toFixed(2)
+    this.setState({accountBalance: newBal}) //set newBal state
+  }
+
+  async componentDidMount(){
+    fetch('https://moj-api.herokuapp.com/credits') //fetch the api 
+      .then((response) => response.json()) //if theres a response from api
+      .then(creditList => { //api = creditList
+        this.setState({ credits: creditList});//set creditList to currentstate
+        this.state.credits.map(credit => 
+        this.setState({accountBalance : (this.state.accountBalance  - parseFloat(credit.amount)).toFixed(2)}) //map credit to accountBalance by (-)  creditAmount
+      )
+    })
+}
+
   addDebit = (e) => {
     e.preventDefault(); // prevent the form from submitting
     const newDebit = (prevState)=> ({ //create newDebit entry 
